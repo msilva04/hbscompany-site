@@ -11,7 +11,7 @@ export default function CTAFinal() {
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://wa.me/5500000000000"
+            href="https://wa.me/5548988151397"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm font-medium text-zinc-900 bg-white rounded-lg hover:bg-zinc-200 transition-colors"

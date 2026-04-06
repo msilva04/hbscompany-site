@@ -38,7 +38,7 @@ export default function Navbar() {
           {/* CTA desktop */}
           <div className="hidden md:block">
             <a
-              href="#contato"
+              href="https://wa.me/5548988151397" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center px-4 py-2 text-sm font-medium text-zinc-900 bg-white rounded-lg hover:bg-zinc-200 transition-colors"
             >
               Fale conosco
@@ -92,7 +92,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contato"
+              href="https://wa.me/5548988151397" target="_blank" rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="block w-full text-center px-4 py-2 text-sm font-medium text-zinc-900 bg-white rounded-lg hover:bg-zinc-200 transition-colors"
             >
