@@ -31,5 +31,4 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           local-dir: ./out/
-          server-dir: ./
-          dangerous-clean-slate: true
+          server-dir: /domains/hbscompany.tech/public_html/
