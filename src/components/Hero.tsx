@@ -173,36 +173,19 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — mouse com bola */}
       <div
         ref={scrollIndicatorRef}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-0"
-        style={{
-          animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 1s forwards",
-        }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        style={{ animation: "heroFadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 1.2s both" }}
       >
-        <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-400">
-          Scroll
-        </span>
-        <div className="w-px h-8 overflow-hidden">
+        <div className="w-6 h-9 rounded-full border border-zinc-500/50 flex items-start justify-center pt-1.5">
           <div
-            className="w-px bg-zinc-400"
-            style={{ animation: "scrollLine 1.6s cubic-bezier(0.32,0.72,0,1) 1s infinite" }}
+            className="w-1.5 h-1.5 rounded-full bg-zinc-400"
+            style={{ animation: "scrollBall 1.6s ease-in-out 1.5s infinite" }}
           />
         </div>
       </div>
-
-      <style>{`
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(16px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes scrollLine {
-          0%   { height: 0; transform: translateY(-100%); }
-          50%  { height: 32px; transform: translateY(0); }
-          100% { height: 0; transform: translateY(100%); }
-        }
-      `}</style>
     </section>
   );
 }
