@@ -4,7 +4,52 @@ import { useEffect, useRef } from "react";
 import HBSLogo from "./HBSLogo";
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    let rafId: number;
+    let lastTimestamp: number | null = null;
+    let direction = 1; // 1 = forward, -1 = backward
+
+    const stepBackward = (timestamp: number) => {
+      if (lastTimestamp === null) {
+        lastTimestamp = timestamp;
+        rafId = requestAnimationFrame(stepBackward);
+        return;
+      }
+
+      const delta = (timestamp - lastTimestamp) / 1000;
+      lastTimestamp = timestamp;
+
+      video.currentTime = Math.max(0, video.currentTime - delta);
+
+      if (video.currentTime <= 0) {
+        direction = 1;
+        lastTimestamp = null;
+        video.play().catch(() => {});
+      } else {
+        rafId = requestAnimationFrame(stepBackward);
+      }
+    };
+
+    const handleEnded = () => {
+      direction = -1;
+      lastTimestamp = null;
+      rafId = requestAnimationFrame(stepBackward);
+    };
+
+    video.addEventListener("ended", handleEnded);
+    video.play().catch(() => {});
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      video.removeEventListener("ended", handleEnded);
+    };
+  }, []);
 
   useEffect(() => {
     const indicator = scrollIndicatorRef.current;
@@ -24,11 +69,10 @@ export default function Hero() {
       id="hero"
       className="relative h-screen overflow-hidden"
     >
-      {/* Vídeo ambient em loop */}
+      {/* Vídeo ping-pong */}
       <video
+        ref={videoRef}
         src="/hero-bg.mp4"
-        autoPlay
-        loop
         muted
         playsInline
         preload="auto"
