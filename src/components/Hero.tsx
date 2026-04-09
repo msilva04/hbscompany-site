@@ -56,7 +56,8 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative h-screen overflow-hidden">
+    <section id="hero" className="relative h-screen overflow-hidden bg-[#09090b]">
+
       {/* Vídeo ping-pong */}
       <video
         ref={videoRef}
@@ -64,31 +65,25 @@ export default function Hero() {
         muted
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover opacity-50"
       />
 
-      {/* Overlay radial 20% */}
+      {/* Radial gradient overlay */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 z-[1]"
         style={{
           background:
-            "radial-gradient(ellipse 80% 70% at 50% 55%, rgba(9,9,11,0.20) 0%, rgba(9,9,11,0.10) 60%, rgba(9,9,11,0.04) 100%)",
+            "radial-gradient(circle at center, rgba(9,9,11,0.8) 0%, rgba(9,9,11,0.3) 50%, rgba(9,9,11,0.6) 100%)",
         }}
       />
 
-      {/* Gradiente inferior */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-white" />
-
       {/* Conteúdo */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+      <div className="relative z-[2] flex flex-col items-center justify-center h-full text-center px-4">
 
         {/* Logo */}
         <div
           className="mb-8"
-          style={{
-            animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.1s both",
-            filter: "drop-shadow(0 2px 20px rgba(0,0,0,0.85))",
-          }}
+          style={{ animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.1s both" }}
         >
           <HBSLogo variant="dark" size="lg" />
         </div>
@@ -106,7 +101,7 @@ export default function Hero() {
 
         {/* H1 */}
         <h1
-          className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white leading-tight max-w-3xl drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)]"
+          className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white leading-tight max-w-3xl"
           style={{ animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.32s both" }}
         >
           Menos trabalho manual.
@@ -116,7 +111,7 @@ export default function Hero() {
 
         {/* Parágrafo */}
         <p
-          className="mt-5 text-base sm:text-lg text-zinc-200/80 max-w-xl drop-shadow-[0_1px_12px_rgba(0,0,0,0.5)]"
+          className="mt-5 text-base sm:text-lg text-zinc-400 max-w-xl"
           style={{ animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.44s both" }}
         >
           Automação, agentes de IA e inteligência de dados para operações B2B.
@@ -134,7 +129,7 @@ export default function Hero() {
             className="group inline-flex items-center justify-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-medium text-zinc-900 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-zinc-100 active:scale-[0.98]"
           >
             Fale com a gente
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/8 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -155,15 +150,15 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator — mouse com bola */}
+      {/* Scroll indicator */}
       <div
         ref={scrollIndicatorRef}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
         style={{ animation: "heroFadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 1.2s both" }}
       >
-        <div className="w-6 h-9 rounded-full border border-zinc-500/50 flex items-start justify-center pt-1.5">
+        <div className="w-6 h-9 rounded-full border border-zinc-600/50 flex items-start justify-center pt-1.5">
           <div
-            className="w-1.5 h-1.5 rounded-full bg-zinc-400"
+            className="w-1.5 h-1.5 rounded-full bg-zinc-500"
             style={{ animation: "scrollBall 1.6s ease-in-out 1.5s infinite" }}
           />
         </div>
