@@ -2,7 +2,7 @@ import HBSLogo from "./HBSLogo";
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-950 py-12">
+    <footer className="bg-zinc-950 py-12 border-t border-zinc-800/50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo + tagline */}

@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HBSLogo from "./HBSLogo";
 
 const links = [
-  { label: "Home", href: "#hero" },
   { label: "Serviços", href: "#servicos" },
   { label: "Como funciona", href: "#como-funciona" },
   { label: "Contato", href: "#contato" },
@@ -12,95 +11,117 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-900/80 backdrop-blur-md border-b border-zinc-800">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <a href="#hero">
+    <>
+      <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl">
+        <div
+          className={`flex items-center justify-between h-12 px-4 sm:px-6 rounded-full border transition-all duration-500 ${
+            scrolled
+              ? "bg-zinc-900/92 backdrop-blur-xl border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+              : "bg-zinc-900/70 backdrop-blur-md border-white/8"
+          }`}
+        >
+          <a href="#hero" className="flex-shrink-0">
             <HBSLogo variant="dark" size="sm" />
           </a>
 
-          {/* Links desktop */}
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-zinc-400 hover:text-zinc-100 text-sm font-medium transition-colors"
+                className="text-zinc-400 hover:text-zinc-100 text-sm transition-colors duration-300"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
-          {/* CTA desktop */}
           <div className="hidden md:block">
             <a
-              href="https://wa.me/5548988151397" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-zinc-900 bg-white rounded-lg hover:bg-zinc-200 transition-colors"
+              href="https://wa.me/5548988151397"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-zinc-900 text-sm font-medium hover:bg-zinc-100 transition-colors duration-300"
             >
               Fale conosco
             </a>
           </div>
 
-          {/* Mobile menu button */}
           <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden text-zinc-400 hover:text-zinc-100"
-            aria-label="Menu"
+            onClick={() => setOpen(true)}
+            className="md:hidden text-zinc-400 hover:text-zinc-100 w-8 h-8 flex items-center justify-center"
+            aria-label="Abrir menu"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {open ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden bg-zinc-900 border-t border-zinc-800">
-          <div className="px-4 py-4 space-y-3">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="block text-zinc-400 hover:text-zinc-100 text-sm font-medium transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="https://wa.me/5548988151397" target="_blank" rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className="block w-full text-center px-4 py-2 text-sm font-medium text-zinc-900 bg-white rounded-lg hover:bg-zinc-200 transition-colors"
-            >
-              Fale conosco
-            </a>
-          </div>
+      {/* Mobile overlay */}
+      <div
+        className={`fixed inset-0 z-[60] flex flex-col px-8 py-10 transition-all duration-500 ${
+          open
+            ? "opacity-100 pointer-events-auto bg-zinc-950/96 backdrop-blur-2xl"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="flex items-center justify-between mb-16">
+          <HBSLogo variant="dark" size="sm" />
+          <button
+            onClick={() => setOpen(false)}
+            className="text-zinc-400 hover:text-zinc-100 w-8 h-8 flex items-center justify-center"
+            aria-label="Fechar menu"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-      )}
-    </nav>
+
+        <div className="flex flex-col gap-6">
+          {links.map((link, i) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="text-3xl font-medium text-zinc-300 hover:text-white transition-colors duration-300"
+              style={{
+                transitionDelay: open ? `${i * 60}ms` : "0ms",
+              }}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-auto">
+          <a
+            href="https://wa.me/5548988151397"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white text-zinc-900 text-sm font-medium hover:bg-zinc-100 transition-colors"
+          >
+            Fale conosco
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/8 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </>
   );
 }

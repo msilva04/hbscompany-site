@@ -87,7 +87,7 @@ export default function Hero() {
       />
 
       {/* Gradiente inferior para transição com a próxima seção */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-zinc-50" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-white" />
 
       {/* Conteúdo */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
