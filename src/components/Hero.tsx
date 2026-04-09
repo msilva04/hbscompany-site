@@ -20,14 +20,10 @@ export default function Hero() {
         rafId = requestAnimationFrame(stepBackward);
         return;
       }
-
       const delta = (timestamp - lastTimestamp) / 1000;
       lastTimestamp = timestamp;
-
       video.currentTime = Math.max(0, video.currentTime - delta);
-
       if (video.currentTime <= 0) {
-        direction = 1;
         lastTimestamp = null;
         video.play().catch(() => {});
       } else {
@@ -52,21 +48,15 @@ export default function Hero() {
   useEffect(() => {
     const indicator = scrollIndicatorRef.current;
     if (!indicator) return;
-
     const handleScroll = () => {
-      const opacity = Math.max(0, 1 - window.scrollY / 120);
-      indicator.style.opacity = String(opacity);
+      indicator.style.opacity = String(Math.max(0, 1 - window.scrollY / 120));
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section
-      id="hero"
-      className="relative h-screen overflow-hidden"
-    >
+    <section id="hero" className="relative h-screen overflow-hidden">
       {/* Vídeo ping-pong */}
       <video
         ref={videoRef}
@@ -77,16 +67,16 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Overlay radial — escuro no centro, transparente nas bordas */}
+      {/* Overlay radial 20% */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 70% at 50% 55%, rgba(9,9,11,0.72) 0%, rgba(9,9,11,0.38) 55%, rgba(9,9,11,0.10) 100%)",
+            "radial-gradient(ellipse 80% 70% at 50% 55%, rgba(9,9,11,0.20) 0%, rgba(9,9,11,0.10) 60%, rgba(9,9,11,0.04) 100%)",
         }}
       />
 
-      {/* Gradiente inferior para transição com a próxima seção */}
+      {/* Gradiente inferior */}
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-white" />
 
       {/* Conteúdo */}
@@ -94,9 +84,9 @@ export default function Hero() {
 
         {/* Logo */}
         <div
-          className="mb-8 opacity-0 translate-y-4"
+          className="mb-8"
           style={{
-            animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.1s forwards",
+            animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.1s both",
             filter: "drop-shadow(0 2px 20px rgba(0,0,0,0.85))",
           }}
         >
@@ -105,10 +95,8 @@ export default function Hero() {
 
         {/* Eyebrow tag */}
         <div
-          className="mb-5 opacity-0 translate-y-4"
-          style={{
-            animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.2s forwards",
-          }}
+          className="mb-5"
+          style={{ animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.2s both" }}
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-medium text-zinc-300 backdrop-blur-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
@@ -118,10 +106,8 @@ export default function Hero() {
 
         {/* H1 */}
         <h1
-          className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white leading-tight max-w-3xl drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)] opacity-0 translate-y-4"
-          style={{
-            animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.32s forwards",
-          }}
+          className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white leading-tight max-w-3xl drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)]"
+          style={{ animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.32s both" }}
         >
           Menos trabalho manual.
           <br />
@@ -130,20 +116,16 @@ export default function Hero() {
 
         {/* Parágrafo */}
         <p
-          className="mt-5 text-base sm:text-lg text-zinc-200/80 max-w-xl drop-shadow-[0_1px_12px_rgba(0,0,0,0.5)] opacity-0 translate-y-4"
-          style={{
-            animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.44s forwards",
-          }}
+          className="mt-5 text-base sm:text-lg text-zinc-200/80 max-w-xl drop-shadow-[0_1px_12px_rgba(0,0,0,0.5)]"
+          style={{ animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.44s both" }}
         >
           Automação, agentes de IA e inteligência de dados para operações B2B.
         </p>
 
         {/* CTAs */}
         <div
-          className="mt-10 flex flex-col sm:flex-row gap-3 opacity-0 translate-y-4"
-          style={{
-            animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.56s forwards",
-          }}
+          className="mt-10 flex flex-col sm:flex-row gap-3"
+          style={{ animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.56s both" }}
         >
           <a
             href="https://wa.me/5548988151397"
