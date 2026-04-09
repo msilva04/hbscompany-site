@@ -13,7 +13,6 @@ export default function Hero() {
 
     let rafId: number;
     let lastTimestamp: number | null = null;
-    let direction = 1; // 1 = forward, -1 = backward
 
     const stepBackward = (timestamp: number) => {
       if (lastTimestamp === null) {
@@ -37,7 +36,6 @@ export default function Hero() {
     };
 
     const handleEnded = () => {
-      direction = -1;
       lastTimestamp = null;
       rafId = requestAnimationFrame(stepBackward);
     };
