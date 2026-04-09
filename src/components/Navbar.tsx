@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import HBSLogo from "./HBSLogo";
 
 const links = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Como funciona", href: "#como-funciona" },
-  { label: "Contato", href: "#contato" },
+  { label: "Serviços", href: "/#servicos" },
+  { label: "Como funciona", href: "/#como-funciona" },
+  { label: "Contato", href: "/#contato" },
 ];
 
 export default function Navbar() {
@@ -29,7 +29,7 @@ export default function Navbar() {
               : "bg-zinc-900/70 backdrop-blur-md border-white/8"
           }`}
         >
-          <a href="#hero" className="flex-shrink-0">
+          <a href="/" className="flex-shrink-0">
             <HBSLogo variant="dark" size="sm" />
           </a>
 

@@ -2,6 +2,7 @@ import Reveal from "./Reveal";
 
 const servicos = [
   {
+    href: "/servicos/agentes-ia",
     titulo: "Agentes de IA",
     descricao:
       "Atendimento, qualificação de leads e tarefas operacionais no piloto automático. Seus processos rodando 24h sem intervenção humana.",
@@ -12,6 +13,7 @@ const servicos = [
     ),
   },
   {
+    href: "/servicos/agentes-voz",
     titulo: "Agentes de Voz",
     descricao: "Ligações automatizadas com IA que fala, escuta e resolve.",
     icone: (
@@ -21,6 +23,7 @@ const servicos = [
     ),
   },
   {
+    href: "/servicos/crm",
     titulo: "Implementação de CRM",
     descricao: "Seu CRM configurado, integrado e rodando em semanas.",
     icone: (
@@ -30,6 +33,7 @@ const servicos = [
     ),
   },
   {
+    href: "/servicos/dashboards",
     titulo: "Dashboards e BI",
     descricao: "Dados que você entende e usa pra tomar decisão.",
     icone: (
@@ -39,6 +43,7 @@ const servicos = [
     ),
   },
   {
+    href: "/servicos/automacoes",
     titulo: "Automações",
     descricao: "Processos manuais eliminados. Fluxos que rodam sozinhos.",
     icone: (
@@ -66,25 +71,33 @@ export default function Servicos() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Card destaque — 2 colunas */}
           <Reveal className="sm:col-span-2 lg:col-span-2 h-full" delay={80}>
-            <div className="relative overflow-hidden bg-zinc-950 rounded-2xl p-10 h-full min-h-[260px] border border-zinc-800 group hover:border-zinc-700 transition-colors duration-500">
+            <a href={servicos[0].href} className="block relative overflow-hidden bg-zinc-950 rounded-2xl p-10 h-full min-h-[260px] border border-zinc-800 group hover:border-zinc-700 transition-colors duration-500">
               <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-zinc-700/15 blur-3xl pointer-events-none" />
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-700/40 to-transparent" />
               <div className="relative z-10 flex flex-col h-full">
                 <div className="text-zinc-500 mb-6">{servicos[0].icone}</div>
                 <h3 className="text-2xl font-medium text-white mb-3">{servicos[0].titulo}</h3>
                 <p className="text-zinc-400 leading-relaxed max-w-md">{servicos[0].descricao}</p>
+                <span className="mt-auto pt-6 flex items-center gap-1.5 text-xs text-zinc-600 group-hover:text-zinc-400 transition-colors duration-300">
+                  Saiba mais
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </span>
               </div>
-            </div>
+            </a>
           </Reveal>
 
           {/* Cards pequenos */}
           {servicos.slice(1).map((s, i) => (
             <Reveal key={s.titulo} delay={(i + 2) * 80} className="h-full">
-              <div className="bg-zinc-950 rounded-2xl p-8 border border-zinc-800 hover:border-zinc-700 transition-colors duration-500 h-full">
+              <a href={s.href} className="flex flex-col bg-zinc-950 rounded-2xl p-8 border border-zinc-800 hover:border-zinc-700 transition-colors duration-500 h-full group">
                 <div className="text-zinc-500 mb-5">{s.icone}</div>
                 <h3 className="text-lg font-medium text-white mb-2">{s.titulo}</h3>
                 <p className="text-sm text-zinc-400 leading-relaxed">{s.descricao}</p>
-              </div>
+                <span className="mt-auto pt-5 flex items-center gap-1.5 text-xs text-zinc-600 group-hover:text-zinc-400 transition-colors duration-300">
+                  Saiba mais
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </span>
+              </a>
             </Reveal>
           ))}
         </div>
