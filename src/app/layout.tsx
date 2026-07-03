@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "HBS Tech — Automação inteligente para negócios",
+  title: "HBS Tech — Automação e Agentes de IA para Empresas",
   description:
     "Automação, agentes de IA e inteligência de dados para operações B2B. Menos trabalho manual, mais resultado.",
 };
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${inter.className} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-white text-zinc-950">
+      <body className="min-h-full flex flex-col bg-white text-neutral-900">
         {children}
       </body>
     </html>

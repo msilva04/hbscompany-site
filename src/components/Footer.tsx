@@ -2,13 +2,13 @@ import HBSLogo from "./HBSLogo";
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-950 py-12 border-t border-zinc-800/50">
+    <footer className="bg-neutral-900 py-12 border-t border-white/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo + tagline */}
           <div className="flex flex-col items-center md:items-start gap-3">
             <HBSLogo variant="dark" size="sm" />
-            <p className="text-sm text-zinc-500">
+            <p className="text-sm text-neutral-500">
               Automação inteligente para negócios.
             </p>
           </div>
@@ -17,25 +17,25 @@ export default function Footer() {
           <div className="flex gap-8 text-sm">
             <a
               href="#hero"
-              className="text-zinc-500 hover:text-zinc-300 transition-colors"
+              className="text-neutral-400 hover:text-white transition-colors"
             >
               Home
             </a>
             <a
               href="#servicos"
-              className="text-zinc-500 hover:text-zinc-300 transition-colors"
+              className="text-neutral-400 hover:text-white transition-colors"
             >
               Serviços
             </a>
             <a
               href="#como-funciona"
-              className="text-zinc-500 hover:text-zinc-300 transition-colors"
+              className="text-neutral-400 hover:text-white transition-colors"
             >
               Como funciona
             </a>
             <a
               href="#contato"
-              className="text-zinc-500 hover:text-zinc-300 transition-colors"
+              className="text-neutral-400 hover:text-white transition-colors"
             >
               Contato
             </a>
@@ -47,7 +47,7 @@ export default function Footer() {
               href="https://instagram.com/hbstech"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-500 hover:text-zinc-300 transition-colors"
+              className="text-neutral-400 hover:text-white transition-colors"
               aria-label="Instagram"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -58,7 +58,7 @@ export default function Footer() {
               href="https://linkedin.com/company/hbstech"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-500 hover:text-zinc-300 transition-colors"
+              className="text-neutral-400 hover:text-white transition-colors"
               aria-label="LinkedIn"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -69,8 +69,8 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-10 pt-6 border-t border-zinc-800 text-center">
-          <p className="text-xs text-zinc-600">
+        <div className="mt-10 pt-6 border-t border-white/10 text-center">
+          <p className="text-xs text-neutral-500">
             &copy; {new Date().getFullYear()} HBS Tech. Todos os direitos
             reservados.
           </p>

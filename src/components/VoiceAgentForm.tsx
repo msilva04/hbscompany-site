@@ -55,13 +55,13 @@ export default function VoiceAgentForm() {
   if (success) {
     return (
       <div className="text-center py-10">
-        <div className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-5">
-          <svg className="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="w-14 h-14 rounded-full bg-emerald-50 flex items-center justify-center mx-auto mb-5">
+          <svg className="w-7 h-7 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </div>
-        <h3 className="text-xl font-medium text-white mb-2">Solicitação enviada!</h3>
-        <p className="text-zinc-400 max-w-sm mx-auto">
+        <h3 className="text-xl font-medium text-neutral-900 mb-2">Solicitação enviada!</h3>
+        <p className="text-neutral-500 max-w-sm mx-auto">
           Em breve você receberá uma ligação do nosso agente de voz.
         </p>
       </div>
@@ -73,7 +73,7 @@ export default function VoiceAgentForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {fields.map((f) => (
           <div key={f.name} className={f.name === "site" ? "sm:col-span-2" : ""}>
-            <label className="block text-sm text-zinc-400 mb-1.5" htmlFor={f.name}>
+            <label className="block text-sm text-neutral-500 mb-1.5" htmlFor={f.name}>
               {f.label}
             </label>
             <input
@@ -84,24 +84,24 @@ export default function VoiceAgentForm() {
               placeholder={f.placeholder}
               value={form[f.name]}
               onChange={handleChange}
-              className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-zinc-600 transition-colors"
+              className="w-full bg-white border border-neutral-200 rounded-xl px-4 py-3 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-neutral-900 transition-colors"
             />
           </div>
         ))}
       </div>
 
       {error && (
-        <p className="text-sm text-red-400">{error}</p>
+        <p className="text-sm text-red-500">{error}</p>
       )}
 
       <button
         type="submit"
         disabled={loading}
-        className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-full bg-white px-8 py-3.5 text-sm font-medium text-zinc-900 hover:bg-zinc-100 transition-colors duration-300 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+        className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-full bg-neutral-900 px-8 py-3.5 text-sm font-medium text-white hover:bg-neutral-700 transition-colors duration-300 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {loading ? "Enviando..." : "Solicitar ligação"}
         {!loading && (
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900/8 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
             <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
               <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>

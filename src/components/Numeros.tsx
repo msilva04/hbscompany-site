@@ -9,15 +9,15 @@ const metricas = [
 
 export default function Numeros() {
   return (
-    <section className="bg-white py-28 sm:py-36 border-y border-zinc-100">
+    <section className="bg-white py-28 sm:py-36 border-y border-neutral-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-16">
           {metricas.map((m, i) => (
             <Reveal key={m.label} delay={i * 80} className="text-center">
-              <p className="text-5xl sm:text-6xl font-mono font-medium text-zinc-950 leading-none">
+              <p className="text-5xl sm:text-6xl font-mono font-medium text-neutral-900 leading-none">
                 {m.valor}
               </p>
-              <p className="mt-3 text-sm text-zinc-500 leading-relaxed">{m.label}</p>
+              <p className="mt-3 text-sm text-neutral-400 leading-relaxed">{m.label}</p>
             </Reveal>
           ))}
         </div>

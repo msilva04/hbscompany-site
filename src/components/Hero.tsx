@@ -1,49 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+
 import HBSLogo from "./HBSLogo";
 
 export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    let rafId: number;
-    let lastTimestamp: number | null = null;
-
-    const stepBackward = (timestamp: number) => {
-      if (lastTimestamp === null) {
-        lastTimestamp = timestamp;
-        rafId = requestAnimationFrame(stepBackward);
-        return;
-      }
-      const delta = (timestamp - lastTimestamp) / 1000;
-      lastTimestamp = timestamp;
-      video.currentTime = Math.max(0, video.currentTime - delta);
-      if (video.currentTime <= 0) {
-        lastTimestamp = null;
-        video.play().catch(() => {});
-      } else {
-        rafId = requestAnimationFrame(stepBackward);
-      }
-    };
-
-    const handleEnded = () => {
-      lastTimestamp = null;
-      rafId = requestAnimationFrame(stepBackward);
-    };
-
-    video.addEventListener("ended", handleEnded);
-    video.play().catch(() => {});
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      video.removeEventListener("ended", handleEnded);
-    };
-  }, []);
 
   useEffect(() => {
     const indicator = scrollIndicatorRef.current;
@@ -56,24 +18,25 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative h-screen overflow-hidden bg-[#09090b]">
+    <section id="hero" className="relative h-screen overflow-hidden bg-white">
 
-      {/* Vídeo ping-pong */}
+      {/* Vídeo ping-pong como plano de fundo */}
       <video
-        ref={videoRef}
-        src="/hero-bg.mp4"
+        src="/hero-3d.mp4"
+        autoPlay
+        loop
         muted
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover opacity-50"
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
       />
 
-      {/* Radial gradient overlay */}
+      {/* Overlay claro pra lavar o vídeo e manter o hero light-first */}
       <div
         className="absolute inset-0 z-[1]"
         style={{
           background:
-            "radial-gradient(circle at center, rgba(9,9,11,0.8) 0%, rgba(9,9,11,0.3) 50%, rgba(9,9,11,0.6) 100%)",
+            "radial-gradient(circle at center, rgba(255,255,255,0.84) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.98) 100%)",
         }}
       />
 
@@ -85,7 +48,7 @@ export default function Hero() {
           className="mb-8"
           style={{ animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.1s both" }}
         >
-          <HBSLogo variant="dark" size="lg" />
+          <HBSLogo variant="light" size="lg" />
         </div>
 
         {/* Eyebrow tag */}
@@ -93,25 +56,25 @@ export default function Hero() {
           className="mb-5"
           style={{ animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.2s both" }}
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-medium text-zinc-300 backdrop-blur-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+          <span className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/70 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-medium text-neutral-400 backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
             Automação B2B
           </span>
         </div>
 
         {/* H1 */}
         <h1
-          className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white leading-tight max-w-3xl"
+          className="text-5xl sm:text-6xl lg:text-7xl font-medium text-neutral-900 leading-[1.05] tracking-[-0.02em] max-w-3xl"
           style={{ animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.32s both" }}
         >
           Menos trabalho manual.
           <br />
-          <span className="text-zinc-300">Mais resultado.</span>
+          <span className="text-neutral-400">Mais resultado.</span>
         </h1>
 
         {/* Parágrafo */}
         <p
-          className="mt-5 text-base sm:text-lg text-zinc-400 max-w-xl"
+          className="mt-6 text-lg sm:text-xl text-neutral-500 max-w-xl"
           style={{ animation: "fadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 0.44s both" }}
         >
           Automação, agentes de IA e inteligência de dados para operações B2B.
@@ -126,10 +89,10 @@ export default function Hero() {
             href="https://wa.me/5548988151397"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center justify-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-medium text-zinc-900 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-zinc-100 active:scale-[0.98]"
+            className="group inline-flex items-center justify-center gap-3 rounded-full bg-neutral-900 px-6 py-3 text-sm font-medium text-white transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-neutral-700 active:scale-[0.98]"
           >
             Fale com a gente
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -138,10 +101,10 @@ export default function Hero() {
 
           <a
             href="#servicos"
-            className="group inline-flex items-center justify-center gap-3 rounded-full border border-white/20 bg-white/8 px-6 py-3 text-sm font-medium text-zinc-200 backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-white/15 hover:border-white/30 active:scale-[0.98]"
+            className="group inline-flex items-center justify-center gap-3 rounded-full border border-neutral-300 bg-white/70 px-6 py-3 text-sm font-medium text-neutral-500 backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-neutral-900 hover:text-neutral-900 active:scale-[0.98]"
           >
             Conheça nossos serviços
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-neutral-900/5 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M6 2.5L6 9.5M6 9.5L3 6.5M6 9.5L9 6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -156,9 +119,9 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
         style={{ animation: "heroFadeUp 0.9s cubic-bezier(0.32,0.72,0,1) 1.2s both" }}
       >
-        <div className="w-6 h-9 rounded-full border border-zinc-600/50 flex items-start justify-center pt-1.5">
+        <div className="w-6 h-9 rounded-full border border-neutral-300 flex items-start justify-center pt-1.5">
           <div
-            className="w-1.5 h-1.5 rounded-full bg-zinc-500"
+            className="w-1.5 h-1.5 rounded-full bg-neutral-400"
             style={{ animation: "scrollBall 1.6s ease-in-out 1.5s infinite" }}
           />
         </div>

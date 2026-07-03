@@ -34,7 +34,7 @@ const ctaSlot = (
     href="https://wa.me/5548988151397"
     target="_blank"
     rel="noopener noreferrer"
-    className="group inline-flex items-center gap-3 rounded-full bg-zinc-950 px-8 py-3.5 text-sm font-medium text-white hover:bg-zinc-800 transition-colors duration-300 active:scale-[0.98]"
+    className="group inline-flex items-center gap-3 rounded-full bg-neutral-900 px-8 py-3.5 text-sm font-medium text-white hover:bg-neutral-700 transition-colors duration-300 active:scale-[0.98]"
   >
     Falar com especialista
     <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -49,6 +49,8 @@ export default function AutomacoesPage() {
   return (
     <ServicePage
       eyebrow="Automações"
+      accent="#8B5CF6"
+      accentBg="#F5F3FF"
       title="Fluxos que rodam sozinhos."
       description="Eliminamos tarefas manuais e repetitivas da sua operação com automações robustas — para que seu time gaste energia onde realmente faz diferença."
       benefits={benefits}

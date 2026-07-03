@@ -17,11 +17,11 @@ export default function HBSLogo({
 }: HBSLogoProps) {
   const { h } = sizes[size];
 
-  // Cores baseadas na variante
-  const hastes = variant === "dark" ? "#D4D4D8" : "#27272A";
-  const barra = "#A1A1AA";
-  const hbsColor = variant === "dark" ? "#D4D4D8" : "#27272A";
-  const techColor = variant === "dark" ? "#71717A" : "#A1A1AA";
+  // Cores baseadas na variante (Brand Guidelines v2)
+  const hastes = variant === "dark" ? "#D4D4D8" : "#171717";
+  const barra = "#A3A3A3";
+  const hbsColor = variant === "dark" ? "#D4D4D8" : "#171717";
+  const techColor = variant === "dark" ? "#737373" : "#A3A3A3";
 
   // Proporções do H
   const hW = h * 0.85;
@@ -85,7 +85,7 @@ export default function HBSLogo({
         y={textY}
         fontFamily="Inter, sans-serif"
         fontSize={fontSize}
-        fontWeight={700}
+        fontWeight={500}
         fill={hbsColor}
         letterSpacing="3"
       >

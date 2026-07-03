@@ -34,7 +34,7 @@ const ctaSlot = (
     href="https://wa.me/5548988151397"
     target="_blank"
     rel="noopener noreferrer"
-    className="group inline-flex items-center gap-3 rounded-full bg-zinc-950 px-8 py-3.5 text-sm font-medium text-white hover:bg-zinc-800 transition-colors duration-300 active:scale-[0.98]"
+    className="group inline-flex items-center gap-3 rounded-full bg-neutral-900 px-8 py-3.5 text-sm font-medium text-white hover:bg-neutral-700 transition-colors duration-300 active:scale-[0.98]"
   >
     Falar com especialista
     <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -49,6 +49,8 @@ export default function DashboardsPage() {
   return (
     <ServicePage
       eyebrow="Dashboards e BI"
+      accent="#10B981"
+      accentBg="#ECFDF5"
       title="Dados que você entende e usa."
       description="Transformamos dados espalhados em painéis claros, conectados e atualizados em tempo real — para que sua equipe tome decisões com velocidade e confiança."
       benefits={benefits}

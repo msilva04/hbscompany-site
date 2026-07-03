@@ -34,6 +34,8 @@ export default function AgentesVozPage() {
   return (
     <ServicePage
       eyebrow="Agentes de Voz"
+      accent="#EA580C"
+      accentBg="#FFF7ED"
       title="IA que fala, escuta e resolve."
       description="Ligações automatizadas com inteligência artificial que conduz conversas reais — qualifica leads, agenda reuniões e resolve chamadas de suporte sem equipe humana."
       benefits={benefits}

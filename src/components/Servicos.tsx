@@ -4,6 +4,8 @@ const servicos = [
   {
     href: "/servicos/agentes-ia",
     titulo: "Agentes de IA",
+    cor: "#6366F1",
+    corBg: "#EEF2FF",
     descricao:
       "Atendimento, qualificação de leads e tarefas operacionais no piloto automático. Seus processos rodando 24h sem intervenção humana.",
     icone: (
@@ -15,6 +17,8 @@ const servicos = [
   {
     href: "/servicos/agentes-voz",
     titulo: "Agentes de Voz",
+    cor: "#EA580C",
+    corBg: "#FFF7ED",
     descricao: "Ligações automatizadas com IA que fala, escuta e resolve.",
     icone: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -25,6 +29,8 @@ const servicos = [
   {
     href: "/servicos/crm",
     titulo: "Implementação de CRM",
+    cor: "#0EA5E9",
+    corBg: "#F0F9FF",
     descricao: "Seu CRM configurado, integrado e rodando em semanas.",
     icone: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -35,6 +41,8 @@ const servicos = [
   {
     href: "/servicos/dashboards",
     titulo: "Dashboards e BI",
+    cor: "#10B981",
+    corBg: "#ECFDF5",
     descricao: "Dados que você entende e usa pra tomar decisão.",
     icone: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -45,6 +53,8 @@ const servicos = [
   {
     href: "/servicos/automacoes",
     titulo: "Automações",
+    cor: "#8B5CF6",
+    corBg: "#F5F3FF",
     descricao: "Processos manuais eliminados. Fluxos que rodam sozinhos.",
     icone: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -56,14 +66,14 @@ const servicos = [
 
 export default function Servicos() {
   return (
-    <section id="servicos" className="bg-white py-28 sm:py-36">
+    <section id="servicos" className="bg-neutral-100 py-28 sm:py-36">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <Reveal className="mb-16">
-          <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-medium text-zinc-500 mb-6">
+          <span className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-medium text-neutral-400 mb-6">
             O que fazemos
           </span>
-          <h2 className="text-4xl sm:text-5xl font-medium text-zinc-950 leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-medium text-neutral-900 leading-tight">
             Tecnologia trabalhando<br />por você.
           </h2>
         </Reveal>
@@ -71,14 +81,23 @@ export default function Servicos() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Card destaque — 2 colunas */}
           <Reveal className="sm:col-span-2 lg:col-span-2 h-full" delay={80}>
-            <a href={servicos[0].href} className="block relative overflow-hidden bg-zinc-950 rounded-2xl p-10 h-full min-h-[260px] border border-zinc-800 group hover:border-zinc-700 transition-colors duration-500">
-              <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-zinc-700/15 blur-3xl pointer-events-none" />
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-700/40 to-transparent" />
+            <a
+              href={servicos[0].href}
+              className="block relative overflow-hidden bg-white rounded-2xl p-10 h-full min-h-[260px] border border-neutral-200 group hover:border-neutral-300 hover:shadow-sm transition-all duration-500"
+              style={{ borderTopWidth: 3, borderTopColor: servicos[0].cor }}
+            >
+              <div
+                className="absolute -top-20 -right-20 w-72 h-72 rounded-full blur-3xl pointer-events-none"
+                style={{ backgroundColor: servicos[0].corBg }}
+              />
               <div className="relative z-10 flex flex-col h-full">
-                <div className="text-zinc-500 mb-6">{servicos[0].icone}</div>
-                <h3 className="text-2xl font-medium text-white mb-3">{servicos[0].titulo}</h3>
-                <p className="text-zinc-400 leading-relaxed max-w-md">{servicos[0].descricao}</p>
-                <span className="mt-auto pt-6 flex items-center gap-1.5 text-xs text-zinc-600 group-hover:text-zinc-400 transition-colors duration-300">
+                <div className="mb-6" style={{ color: servicos[0].cor }}>{servicos[0].icone}</div>
+                <h3 className="text-2xl font-medium text-neutral-900 mb-3">{servicos[0].titulo}</h3>
+                <p className="text-neutral-500 leading-relaxed max-w-md">{servicos[0].descricao}</p>
+                <span
+                  className="mt-auto pt-6 flex items-center gap-1.5 text-xs font-medium transition-opacity duration-300 group-hover:opacity-75"
+                  style={{ color: servicos[0].cor }}
+                >
                   Saiba mais
                   <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </span>
@@ -89,11 +108,18 @@ export default function Servicos() {
           {/* Cards pequenos */}
           {servicos.slice(1).map((s, i) => (
             <Reveal key={s.titulo} delay={(i + 2) * 80} className="h-full">
-              <a href={s.href} className="flex flex-col bg-zinc-950 rounded-2xl p-8 border border-zinc-800 hover:border-zinc-700 transition-colors duration-500 h-full group">
-                <div className="text-zinc-500 mb-5">{s.icone}</div>
-                <h3 className="text-lg font-medium text-white mb-2">{s.titulo}</h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">{s.descricao}</p>
-                <span className="mt-auto pt-5 flex items-center gap-1.5 text-xs text-zinc-600 group-hover:text-zinc-400 transition-colors duration-300">
+              <a
+                href={s.href}
+                className="flex flex-col bg-white rounded-2xl p-8 border border-neutral-200 hover:border-neutral-300 hover:shadow-sm transition-all duration-500 h-full group"
+                style={{ borderTopWidth: 3, borderTopColor: s.cor }}
+              >
+                <div className="mb-5" style={{ color: s.cor }}>{s.icone}</div>
+                <h3 className="text-lg font-medium text-neutral-900 mb-2">{s.titulo}</h3>
+                <p className="text-sm text-neutral-500 leading-relaxed">{s.descricao}</p>
+                <span
+                  className="mt-auto pt-5 flex items-center gap-1.5 text-xs font-medium transition-opacity duration-300 group-hover:opacity-75"
+                  style={{ color: s.cor }}
+                >
                   Saiba mais
                   <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </span>

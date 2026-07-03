@@ -26,6 +26,12 @@ html {
   scroll-margin-top: 5rem;
 }
 
+/* Focus states — Brand Guidelines v2 */
+:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 2px;
+}
+
 /* Hero animations */
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(16px); }

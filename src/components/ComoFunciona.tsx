@@ -23,14 +23,14 @@ const steps = [
 
 export default function ComoFunciona() {
   return (
-    <section id="como-funciona" className="bg-zinc-950 py-28 sm:py-36">
+    <section id="como-funciona" className="bg-white py-28 sm:py-36">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <Reveal className="mb-20">
-          <span className="inline-flex items-center gap-2 rounded-full border border-zinc-800 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-medium text-zinc-600 mb-6">
+          <span className="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-medium text-neutral-400 mb-6">
             Como funciona
           </span>
-          <h2 className="text-4xl sm:text-5xl font-medium text-white leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-medium text-neutral-900 leading-tight tracking-[-0.02em]">
             Do diagnóstico<br />ao resultado.
           </h2>
         </Reveal>
@@ -40,16 +40,16 @@ export default function ComoFunciona() {
             <Reveal
               key={step.numero}
               delay={i * 120}
-              className={`py-10 sm:py-12 ${i > 0 ? "border-t border-zinc-800/60" : ""}`}
+              className={`py-10 sm:py-12 ${i > 0 ? "border-t border-neutral-200" : ""}`}
             >
               <div className="grid grid-cols-[64px_1fr] sm:grid-cols-[100px_1px_1fr] items-start gap-6 sm:gap-10">
-                <span className="text-6xl sm:text-7xl font-mono font-medium text-zinc-800 leading-none -mt-2 select-none">
+                <span className="text-6xl sm:text-7xl font-mono font-medium text-neutral-200 leading-none -mt-2 select-none">
                   {step.numero}
                 </span>
-                <div className="hidden sm:block w-px bg-zinc-800 self-stretch" />
+                <div className="hidden sm:block w-px bg-neutral-200 self-stretch" />
                 <div>
-                  <h3 className="text-xl font-medium text-white mb-2">{step.titulo}</h3>
-                  <p className="text-zinc-400 leading-relaxed max-w-lg">{step.descricao}</p>
+                  <h3 className="text-xl font-medium text-neutral-900 mb-2">{step.titulo}</h3>
+                  <p className="text-neutral-500 leading-relaxed max-w-lg">{step.descricao}</p>
                 </div>
               </div>
             </Reveal>
