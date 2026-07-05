@@ -12,7 +12,7 @@ O site é **export estático** (`output: "export"` no `next.config.ts` → pasta
 
 1. Commit das mudanças na branch `master`
 2. `git push origin master`
-3. O workflow `.github/workflows/deploy.yml` roda sozinho: `npm ci` → `npm run build` → envia `out/` por FTP para `/domains/hbscompany.tech/public_html/` (com limpeza total do destino)
+3. O workflow `.github/workflows/deploy.yml` roda sozinho: `npm ci` → `npm run build` → envia `out/` por FTP para `/domains/hbscompany.tech/public_html/` (sync incremental: substitui/apaga só o que mudou; se o FTP falhar, roda uma 2ª tentativa automática)
 4. Acompanhar/confirmar: `gh run watch $(gh run list --limit 1 --json databaseId --jq '.[0].databaseId')` ou `gh run list --limit 1`
 
 **Não há passo manual de FTP** — as credenciais estão nos secrets do repositório no GitHub (`FTP_HOST`, `FTP_USER`, `FTP_PASS`). Se o deploy falhar por autenticação, é lá que se ajusta (Settings → Secrets and variables → Actions).

@@ -24,7 +24,11 @@ jobs:
       - name: Build do site
         run: npm run build
 
+      # Sync incremental (sem clean-slate): substitui/apaga só o que mudou,
+      # então uma falha no meio não derruba o site inteiro.
       - name: Enviar para Hostinger via FTP
+        id: ftp
+        continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
@@ -32,4 +36,15 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           local-dir: ./out/
           server-dir: /domains/hbscompany.tech/public_html/
-          dangerous-clean-slate: true
+          timeout: 120000
+
+      - name: Reenviar via FTP (2ª tentativa)
+        if: steps.ftp.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local-dir: ./out/
+          server-dir: /domains/hbscompany.tech/public_html/
+          timeout: 120000
