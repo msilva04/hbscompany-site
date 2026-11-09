@@ -1,0 +1,116 @@
+{
+  "data": {
+    "metadata": {
+      "Description": "Discover the innovative world of Apple and shop everything iPhone, iPad, Apple Watch, Mac, and Apple TV, plus explore accessories, entertainment, and expert device support.",
+      "ogDescription": "Discover the innovative world of Apple and shop everything iPhone, iPad, Apple Watch, Mac, and Apple TV, plus explore accessories, entertainment, and expert device support.",
+      "ogSiteName": "Apple",
+      "analytics-s-bucket-1": "applestoreww",
+      "og:title": "Apple",
+      "analytics-s-bucket-2": "applestoreww",
+      "ogUrl": "https://www.apple.com/",
+      "og:type": "website",
+      "globalnav-store-key": "SFX9YPYY9PPXCU9KH",
+      "ogTitle": "Apple",
+      "ogImage": "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?202603312011",
+      "og:description": "Discover the innovative world of Apple and shop everything iPhone, iPad, Apple Watch, Mac, and Apple TV, plus explore accessories, entertainment, and expert device support.",
+      "og:locale": "en_US",
+      "og:site_name": "Apple",
+      "og:image": "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?202603312011",
+      "analytics-s-bucket-0": "applestoreww",
+      "ogLocale": "en_US",
+      "viewport": "width=device-width, initial-scale=1, viewport-fit=cover",
+      "analytics-track": "apple - index/tab",
+      "title": "Apple",
+      "og:url": "https://www.apple.com/",
+      "language": "en-US",
+      "analytics-s-channel": "homepage",
+      "scrapeId": "019d7193-52d9-7279-96de-c9a66f6a1151",
+      "sourceURL": "https://www.apple.com/",
+      "url": "https://www.apple.com/",
+      "statusCode": 200,
+      "contentType": "text/html; charset=utf-8",
+      "proxyUsed": "basic",
+      "cacheState": "hit",
+      "cachedAt": "2026-04-09T09:12:53.209Z",
+      "creditsUsed": 1,
+      "concurrencyLimited": false
+    }
+  },
+  "scrape_id": "019d7193-52d9-7279-96de-c9a66f6a1151",
+  "id": "gU_BeefCr0iRl0EfTD4QW",
+  "startedAt": "2026-04-09T09:29:33.080Z",
+  "endedAt": "2026-04-09T09:29:33.894Z",
+  "endpoint": "scrape",
+  "formState": {
+    "extractSetupCompleted": false,
+    "urls": [],
+    "extractSchema": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "company_mission": {
+          "type": "string"
+        },
+        "supports_sso": {
+          "type": "boolean"
+        },
+        "is_open_source": {
+          "type": "boolean"
+        },
+        "is_in_yc": {
+          "type": "boolean"
+        }
+      }
+    },
+    "extractPrompt": "Extract the company details, following the schema.",
+    "enableWebSearch": false,
+    "constrainUrls": false,
+    "options": {
+      "onlyMainContent": false,
+      "parsePDF": true,
+      "stealthMode": false,
+      "excludeTags": [],
+      "includeTags": [],
+      "waitFor": "",
+      "timeout": "",
+      "maxAge": "2 days",
+      "ignoreSitemap": false,
+      "crawlEntireDomain": false,
+      "sitemap": "include",
+      "limit": "10",
+      "maxDepth": "",
+      "excludePaths": [],
+      "includePaths": [],
+      "includeSubdomains": false,
+      "search": "",
+      "scrapeContentFromSearchResults": true,
+      "timeBasedSearch": "",
+      "location": "",
+      "prompt": ""
+    },
+    "formats": [],
+    "sources": [
+      "web"
+    ],
+    "categories": [],
+    "jsonSchema": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "company_name": {
+          "type": "string"
+        },
+        "company_description": {
+          "type": "string"
+        }
+      }
+    },
+    "jsonPrompt": "",
+    "agent": {},
+    "url": "www.apple.com/",
+    "endpoint": "scrape"
+  },
+  "status": "success",
+  "version": "RuZxIEJSYA3E60Jx_cYGp",
+  "isPreview": false
+}
